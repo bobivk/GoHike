@@ -1,5 +1,6 @@
 package com.example.mark.gohike;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -32,14 +33,15 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView mRecyclerView;
     private RecyclerViewAdapter mAdapter;
 
-    private ArrayList getData() {
+    private ArrayList getData(Context c) {
         ArrayList<Path> paths = new ArrayList<>();
 
         Path Maliovitsa = new Path();
-        Maliovitsa.setName(String.valueOf(R.string.maliovitsa_name));
-        Maliovitsa.setRating(R.integer.maliovitsa_rating);
+        Maliovitsa.setName(c.getString(R.string.maliovitsa_name));
+        Maliovitsa.setRating(4);
         Maliovitsa.setLength(String.valueOf(R.string.maliovitsa_length));
         Maliovitsa.setDifficulty(String.valueOf(R.string.difficulty_hard));
+        Maliovitsa.setImage(R.mipmap.rila34);
         paths.add(Maliovitsa);
 
         Path RilaPath = new Path();
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity
         RilaPath.setRating(5);
         RilaPath.setDifficulty(String.valueOf(R.string.difficulty_easy));
         RilaPath.setDescription("Very good path");
-        RilaPath.setImage(R.drawable.rila34);
+        RilaPath.setImage(R.mipmap.rila34);
         paths.add(RilaPath);
 
         Path SevenRilaLakes = new Path();
@@ -55,10 +57,8 @@ public class MainActivity extends AppCompatActivity
         SevenRilaLakes.setRating(4.5);
         SevenRilaLakes.setDifficulty("Medium");
         SevenRilaLakes.setDescription("sedem ezera");
-        SevenRilaLakes.setImage(R.drawable.sevenlakes);
+        SevenRilaLakes.setImage(R.mipmap.sevenlakes);
         paths.add(SevenRilaLakes);
-
-
 
         return paths;
     }
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity
         // Get a handle to the RecyclerView.
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
 // Create an adapter and supply the data to be displayed.
-        mAdapter = new RecyclerViewAdapter(this, getData());
+        mAdapter = new RecyclerViewAdapter(this, getData(getApplicationContext()));
 // Connect the adapter with the RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
 // Give the RecyclerView a default layout manager.

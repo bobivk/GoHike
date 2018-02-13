@@ -1,5 +1,7 @@
 package com.example.mark.gohike.dummy;
 
+import android.media.Image;
+
 /**
  * Created by Bobby on 06/02/2018.
  */
