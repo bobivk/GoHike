@@ -33,20 +33,31 @@ public class MainActivity extends AppCompatActivity
     private ArrayList getData() {
         ArrayList<Path> paths = new ArrayList<>();
 
-        Path p = new Path();
-        p.setName("RilaPath");
-        p.setRating(5);
-        p.setSkill("Hard");
-        p.setDescription("Very good path");
-        p.setImage(R.drawable.rila34);
-        paths.add(p);
+        Path Maliovitsa = new Path();
+        Maliovitsa.setName(String.valueOf(R.string.maliovitsa_name));
+        Maliovitsa.setRating(R.integer.maliovitsa_rating);
+        Maliovitsa.setLength(String.valueOf(R.string.maliovitsa_length));
+        Maliovitsa.setDifficulty(String.valueOf(R.string.difficulty_hard));
+        paths.add(Maliovitsa);
 
-        Path p2 = new Path();
-        p2.setName("7 Rila lakes");
-        p2.setRating(4.5);
-        p2.setSkill("Medium");
-        p2.setDescription("sedem ezera");
-        p2.setImage(R.drawable.sevenlakes);
+        Path RilaPath = new Path();
+        RilaPath.setName("RilaPath");
+        RilaPath.setRating(5);
+        RilaPath.setDifficulty(String.valueOf(R.string.difficulty_easy));
+        RilaPath.setDescription("Very good path");
+        RilaPath.setImage(R.drawable.rila34);
+        paths.add(RilaPath);
+
+        Path SevenRilaLakes = new Path();
+        SevenRilaLakes.setName("7 Rila lakes");
+        SevenRilaLakes.setRating(4.5);
+        SevenRilaLakes.setDifficulty("Medium");
+        SevenRilaLakes.setDescription("sedem ezera");
+        SevenRilaLakes.setImage(R.drawable.sevenlakes);
+        paths.add(SevenRilaLakes);
+
+
+
         return paths;
     }
 

@@ -7,8 +7,8 @@ package com.example.mark.gohike.dummy;
 public class Path {
     int image;
     double rating;
-    String name, description, skill;
-
+    String name, description;
+    String difficulty, length;
     public double getRating() {
         return rating;
     }
@@ -17,6 +17,8 @@ public class Path {
         this.rating = rating;
     }
 
+    public void setLength(String length){this.length = length;}
+    public String getLength(){return length;}
 
     public int getImage() {
         return image;
@@ -41,8 +43,8 @@ public class Path {
         return description;
     } 
 
-    public void setSkill(String skill){ this.skill = skill; }
-    public String getSkill(){
-        return skill;
+    public void setDifficulty(String difficulty){ this.difficulty = difficulty; }
+    public String getDifficulty(){
+        return difficulty;
     }
 }

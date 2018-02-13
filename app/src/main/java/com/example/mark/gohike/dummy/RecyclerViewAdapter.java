@@ -94,9 +94,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView nameTxt= (TextView) view.findViewById(R.id.nameTxt);
         TextView skillTxt= (TextView) view.findViewById(R.id.skillTxt);
 
+
         nameTxt.setText(p.getName());
-        skillTxt.setText(p.getSkill());
+        skillTxt.setText(p.getDifficulty());
         img.setImageResource(p.getImage());
+
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
