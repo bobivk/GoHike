@@ -21,10 +21,12 @@ import com.example.mark.gohike.PathActivity;
 import com.example.mark.gohike.R;
 import com.example.mark.gohike.MainActivity;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+//RecyclerView.Adapter<RecyclerViewAdapter.PathViewHolder>
 
-
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.PathViewHolder>{
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.PathViewHolder> {
     Context c;
     private ArrayList<Path> paths;
     private LayoutInflater mInflater;
@@ -36,13 +38,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     class PathViewHolder extends RecyclerView.ViewHolder {
+
+        public final TextView PathNameTV;
+        public TextView PathDifficultyTV;
+        public TextView PathLengthTV;
+        public ImageView PathImageView;
+        final RecyclerViewAdapter mAdapter;
+
         public PathViewHolder(View itemView, RecyclerViewAdapter adapter) {
             super(itemView);
             PathNameTV = (TextView) itemView.findViewById(R.id.nameTxt);
+            PathDifficultyTV = (TextView) itemView.findViewById(R.id.difficultyTxt);
+            PathLengthTV = (TextView) itemView.findViewById(R.id.lengthTxt);
+            PathImageView = (ImageView) itemView.findViewById(R.id.pathImg);
             this.mAdapter = adapter;
         }
-        public final TextView PathNameTV;
-        final RecyclerViewAdapter mAdapter;
+
     }
 
    // @Override
@@ -55,16 +66,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return paths.get(i);
     }
 
-    @Override
+  //  @Override
     public RecyclerViewAdapter.PathViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View mItemView = mInflater.inflate(R.layout.list_view_model, parent, false);
         return new PathViewHolder(mItemView, this);
     }
 
-    @Override
+//    @Override
     public void onBindViewHolder(RecyclerViewAdapter.PathViewHolder holder, int position) {
         Path mCurrent = paths.get(position);
         holder.PathNameTV.setText(mCurrent.getName());
+        holder.PathDifficultyTV.setText(mCurrent.getDifficulty());
+        holder.PathLengthTV.setText(mCurrent.getLength());
+        holder.PathImageView.setImageResource(mCurrent.getImage());
     }
 
     @Override
@@ -72,7 +86,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return i;
     }
 
-    @Override
+    //@Override
     public int getItemCount() {
         return paths.size();
     }
@@ -81,7 +95,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     }
 
-  //  @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view==null)
         {
@@ -92,12 +105,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         ImageView img= (ImageView) view.findViewById(R.id.pathImg);
         TextView nameTxt= (TextView) view.findViewById(R.id.nameTxt);
-        TextView skillTxt= (TextView) view.findViewById(R.id.skillTxt);
-
+        TextView difficultyTxt= (TextView) view.findViewById(R.id.difficultyTxt);
+        TextView lengthTxt = (TextView) view.findViewById(R.id.lengthTxt);
 
         nameTxt.setText(p.getName());
-        skillTxt.setText(p.getDifficulty());
+        difficultyTxt.setText(p.getDifficulty());
         img.setImageResource(p.getImage());
+        lengthTxt.setText(p.getLength());
+
 
 
         view.setOnClickListener(new View.OnClickListener() {
