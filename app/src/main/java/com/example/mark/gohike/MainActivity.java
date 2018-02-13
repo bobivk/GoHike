@@ -63,10 +63,15 @@ public class MainActivity extends AppCompatActivity
         return paths;
     }
 
+    private void setNavigationViewListner() {
+        Log.d("tag", R.id.nav_view+"");
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        /// super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,8 +91,9 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        Log.d("tag", savedInstanceState+"");
+        super.onCreate(savedInstanceState);
+        setNavigationViewListner();
 
 //paths
 
