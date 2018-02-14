@@ -12,7 +12,7 @@
     <string name="difficulty_hard">Hard</string>
     <string name="difficulty_advanced">Advanced</string>
 
-<!-- Example paths -->
+    <!-- Example paths -->
     <string name="maliovitsa_name">Maliovitsa</string>
     <string name="maliovitsa_description">Great path to the Maliovitsa peak to an amazing view at the top. Not recommended to novice hikers.</string>
     <string name="maliovitsa_length">5 km</string>
@@ -108,4 +108,5 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="title_activity_map">MapActivity</string>
 </resources>

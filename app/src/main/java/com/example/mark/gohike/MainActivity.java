@@ -1,5 +1,6 @@
 package com.example.mark.gohike;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +23,9 @@ import android.widget.Toast;
 
 import com.example.mark.gohike.dummy.Path;
 import com.example.mark.gohike.dummy.RecyclerViewAdapter;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.api.GoogleApiActivity;
 
 import java.util.ArrayList;
 
@@ -64,14 +68,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setNavigationViewListner() {
-        Log.d("tag", R.id.nav_view+"");
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /// super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -91,20 +94,22 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        Log.d("tag", savedInstanceState+"");
-        super.onCreate(savedInstanceState);
-        setNavigationViewListner();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        /// Log.d("tag", savedInstanceState+"");
+        /// setNavigationViewListner();
 
 //paths
 
-
+        /**
+        ///             RAZKOMENTIRAI TOVA !!!!!!
         // Get a handle to the RecyclerView.
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-// Create an adapter and supply the data to be displayed.
+        // Create an adapter and supply the data to be displayed.
         mAdapter = new RecyclerViewAdapter(this, getData(getApplicationContext()));
-// Connect the adapter with the RecyclerView.
+        // Connect the adapter with the RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
-// Give the RecyclerView a default layout manager.
+        // Give the RecyclerView a default layout manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
       /*  ListView lv= (ListView) findViewById(R.id.lv);
@@ -159,10 +164,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_map) {
-            // Handle the camera action
+            Intent i = new Intent(this, MapActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_recorder) {
-            Toast.makeText(this, "nav_recorder", Toast.LENGTH_SHORT).show();
-            Log.i("tag", "onNavigationItemSelected: ");
 
         } else if (id == R.id.nav_slideshow) {
 
