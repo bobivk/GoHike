@@ -11,6 +11,8 @@ public class Path {
     double rating;
     String name, description;
     String difficulty, length;
+
+
     public double getRating() {
         return rating;
     }

@@ -36,27 +36,37 @@ public class MainActivity extends AppCompatActivity
 
         Path Maliovitsa = new Path();
         Maliovitsa.setName(c.getString(R.string.maliovitsa_name));
-        Maliovitsa.setRating(4);
-        Maliovitsa.setLength(String.valueOf(R.string.maliovitsa_length));
-        Maliovitsa.setDifficulty(String.valueOf(R.string.difficulty_hard));
-        Maliovitsa.setImage(R.mipmap.rila34);
+        Maliovitsa.setRating(4.3);
+        Maliovitsa.setLength(c.getString(R.string.maliovitsa_length));
+        Maliovitsa.setDifficulty(c.getString(R.string.difficulty_hard));
+        Maliovitsa.setImage(R.mipmap.maliovica);
         paths.add(Maliovitsa);
 
         Path RilaPath = new Path();
-        RilaPath.setName("RilaPath");
-        RilaPath.setRating(5);
-        RilaPath.setDifficulty(String.valueOf(R.string.difficulty_easy));
+        RilaPath.setName("Musala Peak");
+        RilaPath.setRating(3.8);
+        RilaPath.setDifficulty(c.getString(R.string.difficulty_medium));
+        RilaPath.setLength("12.5 km");
         RilaPath.setDescription("Very good path");
         RilaPath.setImage(R.mipmap.rila34);
         paths.add(RilaPath);
 
         Path SevenRilaLakes = new Path();
-        SevenRilaLakes.setName("7 Rila lakes");
-        SevenRilaLakes.setRating(4.5);
-        SevenRilaLakes.setDifficulty("Medium");
+        SevenRilaLakes.setName("Seven Rila lakes");
+        SevenRilaLakes.setRating(4.7);
+        SevenRilaLakes.setDifficulty(c.getString(R.string.difficulty_easy));
+        SevenRilaLakes.setLength("10.8 km");
         SevenRilaLakes.setDescription("sedem ezera");
         SevenRilaLakes.setImage(R.mipmap.sevenlakes);
         paths.add(SevenRilaLakes);
+
+        Path GoldenBridges = new Path();
+        GoldenBridges.setName("Golden Bridges");
+        GoldenBridges.setRating(4.2);
+        GoldenBridges.setLength("3.6 km");
+        GoldenBridges.setDifficulty("Very Easy");
+        GoldenBridges.setImage(R.mipmap.goldenbridges);
+        paths.add(GoldenBridges);
 
         return paths;
     }
@@ -68,7 +78,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+/*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +87,7 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-
+*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

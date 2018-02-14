@@ -43,6 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public TextView PathDifficultyTV;
         public TextView PathLengthTV;
         public ImageView PathImageView;
+        public TextView PathRatingTV;
         final RecyclerViewAdapter mAdapter;
 
         public PathViewHolder(View itemView, RecyclerViewAdapter adapter) {
@@ -50,6 +51,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             PathNameTV = (TextView) itemView.findViewById(R.id.nameTxt);
             PathDifficultyTV = (TextView) itemView.findViewById(R.id.difficultyTxt);
             PathLengthTV = (TextView) itemView.findViewById(R.id.lengthTxt);
+            PathRatingTV = (TextView) itemView.findViewById(R.id.ratingTxt);
             PathImageView = (ImageView) itemView.findViewById(R.id.pathImg);
             this.mAdapter = adapter;
         }
@@ -78,6 +80,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.PathNameTV.setText(mCurrent.getName());
         holder.PathDifficultyTV.setText(mCurrent.getDifficulty());
         holder.PathLengthTV.setText(mCurrent.getLength());
+        holder.PathRatingTV.setText(String.valueOf(mCurrent.getRating()));
         holder.PathImageView.setImageResource(mCurrent.getImage());
     }
 
