@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity
 
 //paths
 
-        /**
+
         ///             RAZKOMENTIRAI TOVA !!!!!!
         // Get a handle to the RecyclerView.
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
