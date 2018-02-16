@@ -1,6 +1,7 @@
 package com.example.mark.gohike;
 
 import android.app.Dialog;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -176,16 +177,15 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_map) {
             Intent i = new Intent(this, MapActivity.class);
             startActivity(i);
+            return false;
         } else if (id == R.id.nav_recorder) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_profile) {
-
+            return false;
+        }   else if (id == R.id.nav_profile) {
+            return false;
         } else if (id == R.id.nav_share) {
-
+            return false;
         } else if (id == R.id.nav_send) {
-
+            return false;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
