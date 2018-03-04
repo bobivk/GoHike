@@ -50,16 +50,16 @@ public class MainActivity extends AppCompatActivity
         paths.add(Maliovitsa);
 
         Path RilaPath = new Path();
-        RilaPath.setName("Musala Peak");
+        RilaPath.setName("Връх Мусала");
         RilaPath.setRating(3.8);
         RilaPath.setDifficulty(c.getString(R.string.difficulty_medium));
-        RilaPath.setLength("12.5 km");
+        RilaPath.setLength("12.5 км");
         RilaPath.setDescription("Very good path");
         RilaPath.setImage(R.mipmap.rila34);
         paths.add(RilaPath);
 
         Path SevenRilaLakes = new Path();
-        SevenRilaLakes.setName("Seven Rila lakes");
+        SevenRilaLakes.setName("7те Рилски езера");
         SevenRilaLakes.setRating(4.7);
         SevenRilaLakes.setDifficulty(c.getString(R.string.difficulty_easy));
         SevenRilaLakes.setLength("10.8 km");
@@ -68,10 +68,10 @@ public class MainActivity extends AppCompatActivity
         paths.add(SevenRilaLakes);
 
         Path GoldenBridges = new Path();
-        GoldenBridges.setName("Golden Bridges");
+        GoldenBridges.setName("Златните мостове");
         GoldenBridges.setRating(4.2);
         GoldenBridges.setLength("3.6 km");
-        GoldenBridges.setDifficulty("Very Easy");
+        GoldenBridges.setDifficulty("Лесна");
         GoldenBridges.setImage(R.mipmap.goldenbridges);
         paths.add(GoldenBridges);
 
