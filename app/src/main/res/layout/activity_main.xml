@@ -22,8 +22,7 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
 
-    <!--
-            RAZKOMENTIRAI TOWA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     <android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -40,5 +39,5 @@
             tools:layout_editor_absoluteY="-7dp"
             tools:listitem="@layout/list_view_model"></android.support.v7.widget.RecyclerView>
     </android.support.design.widget.CoordinatorLayout>
-    -->
+
 </android.support.v4.widget.DrawerLayout>

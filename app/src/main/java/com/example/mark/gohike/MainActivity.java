@@ -26,14 +26,20 @@ import com.example.mark.gohike.dummy.RecyclerViewAdapter;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiActivity;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = "MainActivity";
     private RecyclerView mRecyclerView;
     private RecyclerViewAdapter mAdapter;
 
@@ -82,6 +88,23 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    // Read from the database
+    myRef.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            // This method is called once with the initial value and again
+            // whenever data at this location is updated.
+            String value = dataSnapshot.getValue(String.class);
+            Log.d(TAG, "Value is: " + value);
+        }
+
+        @Override
+        public void onCancelled(DatabaseError error) {
+            // Failed to read value
+            Log.w(TAG, "Failed to read value.", error.toException());
+        }
+    });
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,8 +134,7 @@ public class MainActivity extends AppCompatActivity
 
 //paths
 
-        /**
-        ///             RAZKOMENTIRAI TOVA !!!!!!
+
         // Get a handle to the RecyclerView.
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         // Create an adapter and supply the data to be displayed.
@@ -126,6 +148,22 @@ public class MainActivity extends AppCompatActivity
         ListViewAdapter adapter=new ListViewAdapter(this,getData());
         lv.setAdapter(adapter);
         */
+
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        Map<String, Object> map;
+        map = new HashMap<>();
+        map.put("blalba", "balbal");
+
+        myRef.updateChildren(map, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+
+                Log.e(TAG, "test"+databaseError );
+            }
+        });
     }
 
     @Override

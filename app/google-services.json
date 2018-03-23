@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "431025510790",
+    "firebase_url": "https://gohike-3b2d0.firebaseio.com",
+    "project_id": "gohike-3b2d0",
+    "storage_bucket": "gohike-3b2d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431025510790:android:bcd8e9fdc428aa7f",
+        "android_client_info": {
+          "package_name": "com.example.mark.gohike"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "431025510790-em2l307gq63bvnct3h2mc1pn85bflq25.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mark.gohike",
+            "certificate_hash": "407ce8288e1ce050a06fb4cf3706f74475d22dc4"
+          }
+        },
+        {
+          "client_id": "431025510790-21jic5i59jehoqkct29o2asfpg2oj10p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrg3w6KTH5sif5txb4b4NGGUOfuaqOJPM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "431025510790-21jic5i59jehoqkct29o2asfpg2oj10p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
