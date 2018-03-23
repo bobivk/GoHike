@@ -1,6 +1,7 @@
 package com.example.mark.gohike;
 
 import android.app.Dialog;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -55,16 +56,16 @@ public class MainActivity extends AppCompatActivity
         paths.add(Maliovitsa);
 
         Path RilaPath = new Path();
-        RilaPath.setName("Musala Peak");
+        RilaPath.setName("Връх Мусала");
         RilaPath.setRating(3.8);
         RilaPath.setDifficulty(c.getString(R.string.difficulty_medium));
-        RilaPath.setLength("12.5 km");
+        RilaPath.setLength("12.5 км");
         RilaPath.setDescription("Very good path");
         RilaPath.setImage(R.mipmap.rila34);
         paths.add(RilaPath);
 
         Path SevenRilaLakes = new Path();
-        SevenRilaLakes.setName("Seven Rila lakes");
+        SevenRilaLakes.setName("7те Рилски езера");
         SevenRilaLakes.setRating(4.7);
         SevenRilaLakes.setDifficulty(c.getString(R.string.difficulty_easy));
         SevenRilaLakes.setLength("10.8 km");
@@ -73,10 +74,10 @@ public class MainActivity extends AppCompatActivity
         paths.add(SevenRilaLakes);
 
         Path GoldenBridges = new Path();
-        GoldenBridges.setName("Golden Bridges");
+        GoldenBridges.setName("Златните мостове");
         GoldenBridges.setRating(4.2);
         GoldenBridges.setLength("3.6 km");
-        GoldenBridges.setDifficulty("Very Easy");
+        GoldenBridges.setDifficulty("Лесна");
         GoldenBridges.setImage(R.mipmap.goldenbridges);
         paths.add(GoldenBridges);
 
@@ -135,6 +136,10 @@ public class MainActivity extends AppCompatActivity
 //paths
 
 
+<<<<<<< HEAD
+=======
+        ///             RAZKOMENTIRAI TOVA !!!!!!
+>>>>>>> 233f72f03b7d2ab5a6585caab4b1af6b9ce6a26a
         // Get a handle to the RecyclerView.
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         // Create an adapter and supply the data to be displayed.
@@ -214,16 +219,15 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_map) {
             Intent i = new Intent(this, MapActivity.class);
             startActivity(i);
+            return false;
         } else if (id == R.id.nav_recorder) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_profile) {
-
+            return false;
+        }   else if (id == R.id.nav_profile) {
+            return false;
         } else if (id == R.id.nav_share) {
-
+            return false;
         } else if (id == R.id.nav_send) {
-
+            return false;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
