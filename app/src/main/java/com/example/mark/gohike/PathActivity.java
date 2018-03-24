@@ -15,10 +15,7 @@ public class PathActivity extends AppCompatActivity {
         setContentView(R.layout.activity_path);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-<<<<<<< HEAD
 
-=======
->>>>>>> 9213148ca735353a3cf58bbd93d4642f169ddb1b
 /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 =======
@@ -37,8 +34,5 @@ public class PathActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     */
 
-=======
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); */
->>>>>>> 9213148ca735353a3cf58bbd93d4642f169ddb1b
     }
 }
