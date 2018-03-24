@@ -14,7 +14,10 @@
         android:layout_height="match_parent" />
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9213148ca735353a3cf58bbd93d4642f169ddb1b
     <android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -32,7 +35,10 @@
             tools:listitem="@layout/list_view_model"></android.support.v7.widget.RecyclerView>
     </android.support.design.widget.CoordinatorLayout>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9213148ca735353a3cf58bbd93d4642f169ddb1b
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
@@ -41,5 +47,4 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
->>>>>>> 233f72f03b7d2ab5a6585caab4b1af6b9ce6a26a
 </android.support.v4.widget.DrawerLayout>

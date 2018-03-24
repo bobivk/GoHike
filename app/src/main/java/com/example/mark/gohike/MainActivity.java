@@ -92,6 +92,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     // Read from the database
+<<<<<<< HEAD
+=======
+    myRef.addValueEventListener(new ValueEventListener()) {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            // This method is called once with the initial value and again
+            // whenever data at this location is updated.
+            String value = dataSnapshot.getValue(String.class);
+            Log.d(TAG, "Value is: " + value);
+        }
+>>>>>>> 9213148ca735353a3cf58bbd93d4642f169ddb1b
 
 
     @Override
