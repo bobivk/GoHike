@@ -94,9 +94,6 @@ public class MainActivity extends AppCompatActivity
     // Read from the database
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
