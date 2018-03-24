@@ -27,9 +27,11 @@ import com.example.mark.gohike.dummy.RecyclerViewAdapter;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiActivity;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -90,21 +92,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     // Read from the database
-    myRef.addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            // This method is called once with the initial value and again
-            // whenever data at this location is updated.
-            String value = dataSnapshot.getValue(String.class);
-            Log.d(TAG, "Value is: " + value);
-        }
 
-        @Override
-        public void onCancelled(DatabaseError error) {
-            // Failed to read value
-            Log.w(TAG, "Failed to read value.", error.toException());
-        }
-    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,10 +124,6 @@ public class MainActivity extends AppCompatActivity
 //paths
 
 
-<<<<<<< HEAD
-=======
-        ///             RAZKOMENTIRAI TOVA !!!!!!
->>>>>>> 233f72f03b7d2ab5a6585caab4b1af6b9ce6a26a
         // Get a handle to the RecyclerView.
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         // Create an adapter and supply the data to be displayed.
@@ -167,6 +151,22 @@ public class MainActivity extends AppCompatActivity
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
 
                 Log.e(TAG, "test"+databaseError );
+            }
+        });
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                Log.d(TAG, "Value is: " + value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
     }
