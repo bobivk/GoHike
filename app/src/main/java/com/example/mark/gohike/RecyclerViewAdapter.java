@@ -1,27 +1,15 @@
-package com.example.mark.gohike.dummy;
+package com.example.mark.gohike;
 
 /**
  * Created by Bobby on 06/02/2018.
  */
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.R.string;
-import android.R.drawable;
-import android.R.layout;
-import android.content.Intent;
-import com.example.mark.gohike.PathActivity;
-import com.example.mark.gohike.R;
-import com.example.mark.gohike.MainActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 //RecyclerView.Adapter<RecyclerViewAdapter.PathViewHolder>

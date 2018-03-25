@@ -1,4 +1,4 @@
-package com.example.mark.gohike.dummy;
+package com.example.mark.gohike;
 
 import android.media.Image;
 
