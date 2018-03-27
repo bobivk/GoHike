@@ -3,6 +3,7 @@ package com.example.mark.gohike;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,6 +17,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import javax.security.auth.login.LoginException;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,12 +37,56 @@ public class MainActivity extends AppCompatActivity
     private RecyclerViewAdapter mAdapter;
 
     private ArrayList getData(Context c) {
-        ArrayList<Path> paths = new ArrayList<>();
+        final ArrayList<Path> paths = new ArrayList<>();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference trailsRootRef = database.getReference("trails");
+
+        Path Maliovitsa2 = new Path();
+        Maliovitsa2.setName(c.getString(R.string.maliovitsa_name));
+        Maliovitsa2.setRating(4.3);
+        Maliovitsa2.setLength(35543L);
+        Maliovitsa2.setDifficulty(c.getString(R.string.difficulty_hard));
+        Maliovitsa2.setImage(R.mipmap.maliovica);
+
+
+        trailsRootRef.child(Maliovitsa2.getName()).updateChildren(Maliovitsa2.toMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+        });
+
+
+        trailsRootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+               if(dataSnapshot.exists()) {
+                   for(DataSnapshot dschild : dataSnapshot.getChildren()) {
+                       Path path = dataSnapshot.getValue(Path.class);
+                       paths.add(path);
+                       Log.i(TAG, "onDataChange: " + dschild.getValue());
+                   }
+               }
+               else {
+                   Log.i(TAG, "onDataChange"+ !dataSnapshot.exists());
+               }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
+
 
         Path Maliovitsa = new Path();
         Maliovitsa.setName(c.getString(R.string.maliovitsa_name));
         Maliovitsa.setRating(4.3);
-        Maliovitsa.setLength(c.getString(R.string.maliovitsa_length));
+        Maliovitsa.setLength(35543L);
         Maliovitsa.setDifficulty(c.getString(R.string.difficulty_hard));
         Maliovitsa.setImage(R.mipmap.maliovica);
         paths.add(Maliovitsa);
@@ -46,7 +95,7 @@ public class MainActivity extends AppCompatActivity
         RilaPath.setName("Връх Мусала");
         RilaPath.setRating(3.8);
         RilaPath.setDifficulty(c.getString(R.string.difficulty_medium));
-        RilaPath.setLength("12.5 км");
+        RilaPath.setLength(5115L);
         RilaPath.setDescription("Very good path");
         RilaPath.setImage(R.mipmap.rila34);
         paths.add(RilaPath);
@@ -55,7 +104,7 @@ public class MainActivity extends AppCompatActivity
         SevenRilaLakes.setName("7те Рилски езера");
         SevenRilaLakes.setRating(4.7);
         SevenRilaLakes.setDifficulty(c.getString(R.string.difficulty_easy));
-        SevenRilaLakes.setLength("10.8 km");
+        SevenRilaLakes.setLength(31213L);
         SevenRilaLakes.setDescription("sedem ezera");
         SevenRilaLakes.setImage(R.mipmap.sevenlakes);
         paths.add(SevenRilaLakes);
@@ -63,7 +112,7 @@ public class MainActivity extends AppCompatActivity
         Path GoldenBridges = new Path();
         GoldenBridges.setName("Златните мостове");
         GoldenBridges.setRating(4.2);
-        GoldenBridges.setLength("3.6 km");
+        GoldenBridges.setLength(3115L);
         GoldenBridges.setDifficulty("Лесна");
         GoldenBridges.setImage(R.mipmap.goldenbridges);
         paths.add(GoldenBridges);
@@ -85,6 +134,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getData(getApplicationContext());
 /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -124,8 +174,7 @@ public class MainActivity extends AppCompatActivity
         */
 
         // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
+
 
 /*
         Map<String, Object> map;
@@ -140,22 +189,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 */
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-/*                String value = dataSnapshot.getValue(String.class);
-                Log.d(TAG, "Value is: " + value);
-                */
-            }
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
     }
 
     @Override

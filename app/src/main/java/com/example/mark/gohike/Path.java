@@ -2,16 +2,24 @@ package com.example.mark.gohike;
 
 import android.media.Image;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Bobby on 06/02/2018.
  */
 
 public class Path {
-    int image;
-    double rating;
-    String name, description;
-    String difficulty, length;
+    public Integer image;
+    public Double rating;
+    public String name;
+    public String description;
+    public String difficulty;
+    public Long length;
 
+
+    public Path(){
+    }
 
     public double getRating() {
         return rating;
@@ -21,8 +29,8 @@ public class Path {
         this.rating = rating;
     }
 
-    public void setLength(String length){this.length = length;}
-    public String getLength(){return length;}
+    public void setLength(Long length){this.length = length;}
+    public Long getLength(){return length;}
 
     public int getImage() {
         return image;
@@ -50,5 +58,17 @@ public class Path {
     public void setDifficulty(String difficulty){ this.difficulty = difficulty; }
     public String getDifficulty(){
         return difficulty;
+    }
+
+
+    public Map<String, Object> toMap(){
+        Map<String, Object> map = new HashMap<>();
+        map.put("image", image);
+        map.put("rating", rating);
+        map.put("name",name);
+        map.put("description",description);
+        map.put("difficulty",difficulty);
+        map.put("length",length);
+        return map;
     }
 }

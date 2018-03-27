@@ -67,7 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Path mCurrent = paths.get(position);
         holder.PathNameTV.setText(mCurrent.getName());
         holder.PathDifficultyTV.setText(mCurrent.getDifficulty());
-        holder.PathLengthTV.setText(mCurrent.getLength());
+        holder.PathLengthTV.setText("aloalo");
         holder.PathRatingTV.setText(String.valueOf(mCurrent.getRating()));
         holder.PathImageView.setImageResource(mCurrent.getImage());
     }
@@ -102,7 +102,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         nameTxt.setText(p.getName());
         difficultyTxt.setText(p.getDifficulty());
         img.setImageResource(p.getImage());
-        lengthTxt.setText(p.getLength());
+        lengthTxt.setText("lengthtxt");
 
 
 
