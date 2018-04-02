@@ -36,11 +36,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public PathViewHolder(View itemView, RecyclerViewAdapter adapter) {
             super(itemView);
-            PathNameTV = (TextView) itemView.findViewById(R.id.nameTxt);
-            PathDifficultyTV = (TextView) itemView.findViewById(R.id.difficultyTxt);
-            PathLengthTV = (TextView) itemView.findViewById(R.id.lengthTxt);
-            PathRatingTV = (TextView) itemView.findViewById(R.id.ratingTxt);
-            PathImageView = (ImageView) itemView.findViewById(R.id.pathImg);
+            PathNameTV = itemView.findViewById(R.id.nameTxt);
+            PathDifficultyTV = itemView.findViewById(R.id.difficultyTxt);
+            PathLengthTV = itemView.findViewById(R.id.lengthTxt);
+            PathRatingTV = itemView.findViewById(R.id.ratingTxt);
+            PathImageView = itemView.findViewById(R.id.pathImg);
             this.mAdapter = adapter;
         }
 
@@ -64,12 +64,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 //    @Override
     public void onBindViewHolder(RecyclerViewAdapter.PathViewHolder holder, int position) {
-        Path mCurrent = paths.get(position);
-        holder.PathNameTV.setText(mCurrent.getName());
-        holder.PathDifficultyTV.setText(mCurrent.getDifficulty());
-        holder.PathLengthTV.setText("aloalo");
-        holder.PathRatingTV.setText(String.valueOf(mCurrent.getRating()));
-        holder.PathImageView.setImageResource(mCurrent.getImage());
+        Path currentPath = paths.get(position);
+        holder.PathNameTV.setText(currentPath.getName());
+        holder.PathDifficultyTV.setText(currentPath.getDifficulty());
+        holder.PathLengthTV.setText(String.valueOf(currentPath.getLength()));
+        holder.PathRatingTV.setText(String.valueOf(currentPath.getRating()));
+        holder.PathImageView.setImageResource(currentPath.getImage());
     }
 
     @Override
@@ -85,7 +85,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void startPathActivity(View view) {
 
     }
-
+/*
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view==null)
         {
@@ -115,4 +115,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         return view;
     }
+    */
 }

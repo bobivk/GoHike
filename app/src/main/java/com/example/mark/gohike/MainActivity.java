@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.os.Parcel;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 
 import javax.security.auth.login.LoginException;
 
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -38,10 +40,10 @@ public class MainActivity extends AppCompatActivity
 
     private ArrayList getData(Context c) {
         final ArrayList<Path> paths = new ArrayList<>();
-
+/*
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference trailsRootRef = database.getReference("trails");
-
+/*
         Path Maliovitsa2 = new Path();
         Maliovitsa2.setName(c.getString(R.string.maliovitsa_name));
         Maliovitsa2.setRating(4.3);
@@ -49,7 +51,8 @@ public class MainActivity extends AppCompatActivity
         Maliovitsa2.setDifficulty(c.getString(R.string.difficulty_hard));
         Maliovitsa2.setImage(R.mipmap.maliovica);
 
-
+*/
+/*
         trailsRootRef.child(Maliovitsa2.getName()).updateChildren(Maliovitsa2.toMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -81,9 +84,10 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+*/
 
 
-        Path Maliovitsa = new Path();
+        Path Maliovitsa = new Path("Мальовица", R.string.maliovitsa_description, R.string.difficulty_hard, "4.3", "8");
         Maliovitsa.setName(c.getString(R.string.maliovitsa_name));
         Maliovitsa.setRating(4.3);
         Maliovitsa.setLength(35543L);
@@ -125,9 +129,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    // Read from the database
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,16 +136,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getData(getApplicationContext());
-/*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-*/
+
+//drawerLayout
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -153,10 +147,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        /// Log.d("tag", savedInstanceState+"");
-        /// setNavigationViewListner();
 
-//paths
 
 
         // Get a handle to the RecyclerView.
@@ -168,12 +159,21 @@ public class MainActivity extends AppCompatActivity
         // Give the RecyclerView a default layout manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-      /*  ListView lv= (ListView) findViewById(R.id.lv);
-        ListViewAdapter adapter=new ListViewAdapter(this,getData());
-        lv.setAdapter(adapter);
-        */
 
-        // Write a message to the database
+
+        mRecyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(this, mRecyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        startPathActivity(view);
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
+
+
 
 
 /*
@@ -203,7 +203,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void startPathActivity(View view) {
-        Intent intent = new Intent(this, PathActivity.class);
+        Intent intent = new Intent(this, ScrollingActivity.class);
+
         startActivity(intent);
     }
 

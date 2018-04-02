@@ -1,6 +1,8 @@
 package com.example.mark.gohike;
 
 import android.media.Image;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,17 +11,15 @@ import java.util.Map;
  * Created by Bobby on 06/02/2018.
  */
 
-public class Path {
-    public Integer image;
-    public Double rating;
+public class Path implements Parcelable{
     public String name;
     public String description;
     public String difficulty;
+    public Double rating;
     public Long length;
+    public Integer image;
 
 
-    public Path(){
-    }
 
     public double getRating() {
         return rating;
@@ -60,7 +60,7 @@ public class Path {
         return difficulty;
     }
 
-
+/*
     public Map<String, Object> toMap(){
         Map<String, Object> map = new HashMap<>();
         map.put("image", image);
@@ -71,4 +71,59 @@ public class Path {
         map.put("length",length);
         return map;
     }
+*/
+    //parcel
+
+    protected Path(Parcel in) {
+        name = in.readString();
+        description = in.readString();
+        difficulty = in.readString();
+        rating = in.readByte() == 0x00 ? null : in.readDouble();
+        length = in.readByte() == 0x00 ? null : in.readLong();
+        image = in.readByte() == 0x00 ? null : in.readInt();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeString(difficulty);
+        if (rating == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeDouble(rating);
+        }
+        if (length == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeLong(length);
+        }
+        if (image == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(image);
+        }
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Path> CREATOR = new Parcelable.Creator<Path>() {
+        @Override
+        public Path createFromParcel(Parcel in) {
+            return new Path(in);
+        }
+
+        @Override
+        public Path[] newArray(int size) {
+            return new Path[size];
+        }
+    };
+
 }
