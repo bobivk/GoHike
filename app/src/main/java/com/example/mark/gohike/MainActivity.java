@@ -37,10 +37,11 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG = "MainActivity";
     private RecyclerView mRecyclerView;
     private RecyclerViewAdapter mAdapter;
+    final ArrayList<Path> paths = new ArrayList<>();
 
     private ArrayList getData(Context c) {
-        final ArrayList<Path> paths = new ArrayList<>();
-/*
+
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference trailsRootRef = database.getReference("trails");
 /*
@@ -87,15 +88,13 @@ public class MainActivity extends AppCompatActivity
 */
 
 
-        Path Maliovitsa = new Path("Мальовица", R.string.maliovitsa_description, R.string.difficulty_hard, "4.3", "8");
-        Maliovitsa.setName(c.getString(R.string.maliovitsa_name));
-        Maliovitsa.setRating(4.3);
-        Maliovitsa.setLength(35543L);
-        Maliovitsa.setDifficulty(c.getString(R.string.difficulty_hard));
-        Maliovitsa.setImage(R.mipmap.maliovica);
+        Path Maliovitsa = new Path("Мальовица", String.valueOf(R.string.maliovitsa_description), String.valueOf(R.string.difficulty_hard),
+                Double.valueOf(4.3), Long.valueOf(8L), Integer.valueOf(R.mipmap.maliovica));
+
         paths.add(Maliovitsa);
 
-        Path RilaPath = new Path();
+        Path RilaPath = new Path("Връх Мусала", String.valueOf(R.string.musala_description), String.valueOf(R.string.difficulty_medium),
+                Double.valueOf(4.7), Long.valueOf(14L), Integer.valueOf(R.mipmap.rila34));
         RilaPath.setName("Връх Мусала");
         RilaPath.setRating(3.8);
         RilaPath.setDifficulty(c.getString(R.string.difficulty_medium));
@@ -104,7 +103,8 @@ public class MainActivity extends AppCompatActivity
         RilaPath.setImage(R.mipmap.rila34);
         paths.add(RilaPath);
 
-        Path SevenRilaLakes = new Path();
+        Path SevenRilaLakes = new Path("Седемте Рилски езера",String.valueOf(R.string.sedemezera_description), String.valueOf(R.string.difficulty_easy),
+                Double.valueOf(3.8), Long.valueOf(9L), Integer.valueOf(R.mipmap.sevenlakes));
         SevenRilaLakes.setName("7те Рилски езера");
         SevenRilaLakes.setRating(4.7);
         SevenRilaLakes.setDifficulty(c.getString(R.string.difficulty_easy));
@@ -113,7 +113,8 @@ public class MainActivity extends AppCompatActivity
         SevenRilaLakes.setImage(R.mipmap.sevenlakes);
         paths.add(SevenRilaLakes);
 
-        Path GoldenBridges = new Path();
+        Path GoldenBridges = new Path("Златните мостове", String.valueOf(R.string.zlatnitemostove_description), String.valueOf(R.string.difficulty_easy),
+                Double.valueOf(4.1), Long.valueOf(6L), Integer.valueOf(R.mipmap.goldenbridges));
         GoldenBridges.setName("Златните мостове");
         GoldenBridges.setRating(4.2);
         GoldenBridges.setLength(3115L);
@@ -175,8 +176,8 @@ public class MainActivity extends AppCompatActivity
 
 
 
-
 /*
+
         Map<String, Object> map;
         map = new HashMap<>();
         map.put("blalba", "balbal");
@@ -189,7 +190,35 @@ public class MainActivity extends AppCompatActivity
             }
         });
 */
+/*
+        Path RilaPath = new Path();
+        RilaPath.setName("Връх Мусала");
+        RilaPath.setRating(3.8);
+        RilaPath.setDifficulty(getString(R.string.difficulty_medium));
+        RilaPath.setLength(5115L);
+        RilaPath.setDescription("Very good path");
+        RilaPath.setImage(R.mipmap.rila34);
+        paths.add(RilaPath);
 
+        Path SevenRilaLakes = new Path();
+        SevenRilaLakes.setName("7те Рилски езера");
+        SevenRilaLakes.setRating(4.7);
+        SevenRilaLakes.setDifficulty(c.getString(R.string.difficulty_easy));
+        SevenRilaLakes.setLength(31213L);
+        SevenRilaLakes.setDescription("sedem ezera");
+        SevenRilaLakes.setImage(R.mipmap.sevenlakes);
+        paths.add(SevenRilaLakes);
+
+        Path GoldenBridges = new Path();
+        GoldenBridges.setName("Златните мостове");
+        GoldenBridges.setRating(4.2);
+        GoldenBridges.setLength(3115L);
+        GoldenBridges.setDifficulty("Лесна");
+        GoldenBridges.setImage(R.mipmap.goldenbridges);
+        paths.add(GoldenBridges);
+
+        return paths;
+        */
     }
 
     @Override
@@ -204,7 +233,8 @@ public class MainActivity extends AppCompatActivity
 
     public void startPathActivity(View view) {
         Intent intent = new Intent(this, ScrollingActivity.class);
-
+        int position = (int) view.getTag();
+        intent.putExtra("Path sent", paths.get(position));
         startActivity(intent);
     }
 

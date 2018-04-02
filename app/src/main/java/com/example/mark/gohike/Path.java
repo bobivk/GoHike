@@ -4,6 +4,7 @@ import android.media.Image;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +12,7 @@ import java.util.Map;
  * Created by Bobby on 06/02/2018.
  */
 
-public class Path implements Parcelable{
+public class Path implements Serializable{
     public String name;
     public String description;
     public String difficulty;
@@ -19,6 +20,15 @@ public class Path implements Parcelable{
     public Long length;
     public Integer image;
 
+
+    public Path (String name, String description, String difficulty, Double rating, Long length, Integer image){
+        this.name = name;
+        this.description = description;
+        this.difficulty = difficulty;
+        this.rating = rating;
+        this.length = length;
+        this.image = image;
+    }
 
 
     public double getRating() {
@@ -71,7 +81,7 @@ public class Path implements Parcelable{
         map.put("length",length);
         return map;
     }
-*/
+
     //parcel
 
     protected Path(Parcel in) {
@@ -125,5 +135,5 @@ public class Path implements Parcelable{
             return new Path[size];
         }
     };
-
+*/
 }
