@@ -19,8 +19,3 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
-
--dontwarn rx.Observale.**
--dontwarn rx.**
--dontwarn com.squareup.okhttp.internal.huc.**
--dontwarn com.google.appengine.api.urlfetch.**

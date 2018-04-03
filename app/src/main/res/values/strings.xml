@@ -12,7 +12,6 @@
     <string name="difficulty_hard">Сложна</string>
     <string name="difficulty_advanced">За хора с опит</string>
 
-    <!-- Example paths -->
     <string name="maliovitsa_name">Мальовица</string>
     <string name="maliovitsa_description">Пътека до връх Мальовица с хубава гледка. Не се препоръчва за катерачи без опит.</string>
     <string name="maliovitsa_length">5 км</string>
