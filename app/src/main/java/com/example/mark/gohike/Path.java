@@ -16,12 +16,12 @@ public class Path implements Serializable{
     public String name;
     public String description;
     public String difficulty;
-    public Double rating;
-    public Long length;
+    public String rating;
+    public String length;
     public Integer image;
 
 
-    public Path (String name, String description, String difficulty, Double rating, Long length, Integer image){
+    public Path (String name, String description, String difficulty, String rating, String length, Integer image){
         this.name = name;
         this.description = description;
         this.difficulty = difficulty;
@@ -31,16 +31,16 @@ public class Path implements Serializable{
     }
 
 
-    public double getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
-    public void setLength(Long length){this.length = length;}
-    public Long getLength(){return length;}
+    public void setLength(String length){this.length = length;}
+    public String getLength(){return length;}
 
     public int getImage() {
         return image;

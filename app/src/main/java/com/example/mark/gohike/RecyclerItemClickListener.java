@@ -28,6 +28,7 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
         mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onSingleTapUp(MotionEvent e) {
+               // startPathActivity(View view);
                 return true;
             }
 
@@ -49,6 +50,8 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
         }
         return false;
     }
+
+
 
     @Override public void onTouchEvent(RecyclerView view, MotionEvent motionEvent) { }
 

@@ -41,10 +41,10 @@ public class MainActivity extends AppCompatActivity
 
     private ArrayList getData(Context c) {
 
-
+/*
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference trailsRootRef = database.getReference("trails");
-/*
+
         Path Maliovitsa2 = new Path();
         Maliovitsa2.setName(c.getString(R.string.maliovitsa_name));
         Maliovitsa2.setRating(4.3);
@@ -88,38 +88,20 @@ public class MainActivity extends AppCompatActivity
 */
 
 
-        Path Maliovitsa = new Path("Мальовица", String.valueOf(R.string.maliovitsa_description), String.valueOf(R.string.difficulty_hard),
-                Double.valueOf(4.3), Long.valueOf(8L), Integer.valueOf(R.mipmap.maliovica));
-
+        Path Maliovitsa = new Path("Мальовица", String.valueOf(R.string.maliovitsa_description), "Лесен",
+                "4.3/5", "8 км", R.mipmap.maliovica);
         paths.add(Maliovitsa);
 
-        Path RilaPath = new Path("Връх Мусала", String.valueOf(R.string.musala_description), String.valueOf(R.string.difficulty_medium),
-                Double.valueOf(4.7), Long.valueOf(14L), Integer.valueOf(R.mipmap.rila34));
-        RilaPath.setName("Връх Мусала");
-        RilaPath.setRating(3.8);
-        RilaPath.setDifficulty(c.getString(R.string.difficulty_medium));
-        RilaPath.setLength(5115L);
-        RilaPath.setDescription("Very good path");
-        RilaPath.setImage(R.mipmap.rila34);
+        Path RilaPath = new Path("Връх Мусала", String.valueOf(R.string.musala_description), "Среден",
+        "4.7/5", "14.1 км", R.mipmap.rila34);
         paths.add(RilaPath);
 
-        Path SevenRilaLakes = new Path("Седемте Рилски езера",String.valueOf(R.string.sedemezera_description), String.valueOf(R.string.difficulty_easy),
-                Double.valueOf(3.8), Long.valueOf(9L), Integer.valueOf(R.mipmap.sevenlakes));
-        SevenRilaLakes.setName("7те Рилски езера");
-        SevenRilaLakes.setRating(4.7);
-        SevenRilaLakes.setDifficulty(c.getString(R.string.difficulty_easy));
-        SevenRilaLakes.setLength(31213L);
-        SevenRilaLakes.setDescription("sedem ezera");
-        SevenRilaLakes.setImage(R.mipmap.sevenlakes);
+        Path SevenRilaLakes = new Path("Седемте Рилски езера",String.valueOf(R.string.sedemezera_description),
+                "Лесен", "3.8/5", "9.5 км", R.mipmap.sevenlakes);
         paths.add(SevenRilaLakes);
 
-        Path GoldenBridges = new Path("Златните мостове", String.valueOf(R.string.zlatnitemostove_description), String.valueOf(R.string.difficulty_easy),
-                Double.valueOf(4.1), Long.valueOf(6L), Integer.valueOf(R.mipmap.goldenbridges));
-        GoldenBridges.setName("Златните мостове");
-        GoldenBridges.setRating(4.2);
-        GoldenBridges.setLength(3115L);
-        GoldenBridges.setDifficulty("Лесна");
-        GoldenBridges.setImage(R.mipmap.goldenbridges);
+        Path GoldenBridges = new Path("Златните мостове", String.valueOf(R.string.zlatnitemostove_description),
+                "Лесен", "4.1/5","6.3 км", R.mipmap.goldenbridges);
         paths.add(GoldenBridges);
 
         return paths;
@@ -165,11 +147,11 @@ public class MainActivity extends AppCompatActivity
         mRecyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(this, mRecyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                        startPathActivity(view);
+                        startPathActivity(view, position);
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
-                        // do whatever
+
                     }
                 })
         );
@@ -231,9 +213,8 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void startPathActivity(View view) {
+    public void startPathActivity(View view, int position) {
         Intent intent = new Intent(this, ScrollingActivity.class);
-        int position = (int) view.getTag();
         intent.putExtra("Path sent", paths.get(position));
         startActivity(intent);
     }

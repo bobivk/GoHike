@@ -3,6 +3,8 @@
 
     <string name="navigation_drawer_open">Отвори меню</string>
     <string name="navigation_drawer_close">Затвори меню</string>
+    <string name="km"> км</string>
+    <string name="ot10">/10</string>
 
     <string name="action_settings">Настройки</string>
     <string name="title_activity_path">PathActivity</string>

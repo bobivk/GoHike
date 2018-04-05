@@ -42,10 +42,10 @@ public class PathActivity extends AppCompatActivity {
         pathDifficultyTV.setText(pathReceived.difficulty);
 
         TextView pathRatingTV = findViewById(R.id.pathRating);
-        pathRatingTV.setText(String.valueOf(pathReceived.rating));
+        pathRatingTV.setText(pathReceived.rating);
 
         TextView pathLengthTV = findViewById(R.id.pathLength);
-        pathLengthTV.setText(String.valueOf(pathReceived.length));
+        pathLengthTV.setText(pathReceived.length);
 
     }
 }
