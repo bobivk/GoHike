@@ -19,15 +19,18 @@ public class Path implements Serializable{
     public String rating;
     public String length;
     public Integer image;
+    public String imageSrc;
 
 
-    public Path (String name, String description, String difficulty, String rating, String length, Integer image){
+    public Path (String name, String description, String difficulty, String rating, String length,
+                 Integer image){
         this.name = name;
         this.description = description;
         this.difficulty = difficulty;
         this.rating = rating;
         this.length = length;
         this.image = image;
+        //this.imageSrc = imageSrc;
     }
 
 
@@ -69,6 +72,7 @@ public class Path implements Serializable{
     public String getDifficulty(){
         return difficulty;
     }
+    public String getImageSrc(){return imageSrc;}
 
 /*
     public Map<String, Object> toMap(){

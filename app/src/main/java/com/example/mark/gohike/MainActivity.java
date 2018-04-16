@@ -19,12 +19,15 @@ import android.view.MenuItem;
 import android.os.Parcel;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 
@@ -41,18 +44,12 @@ public class MainActivity extends AppCompatActivity
 
     private ArrayList getData(Context c) {
 
-/*
+        /*
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference trailsRootRef = database.getReference("trails");
 
-        Path Maliovitsa2 = new Path();
-        Maliovitsa2.setName(c.getString(R.string.maliovitsa_name));
-        Maliovitsa2.setRating(4.3);
-        Maliovitsa2.setLength(35543L);
-        Maliovitsa2.setDifficulty(c.getString(R.string.difficulty_hard));
-        Maliovitsa2.setImage(R.mipmap.maliovica);
 
-*/
+
 /*
         trailsRootRef.child(Maliovitsa2.getName()).updateChildren(Maliovitsa2.toMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -60,8 +57,8 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-
-
+*/
+/*
         trailsRootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -84,8 +81,8 @@ public class MainActivity extends AppCompatActivity
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
-
 */
+
 
 
         Path Maliovitsa = new Path("Мальовица", String.valueOf(R.string.maliovitsa_description), "Лесен",
@@ -122,7 +119,7 @@ public class MainActivity extends AppCompatActivity
 
 //drawerLayout
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -130,11 +127,24 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+/*
+        UploadTask uploadTask;
+        uploadTask = imagePathReference.putBytes(dataNew);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.e("firebase ", " addOnFailureListener ");
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
-
-
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                //taskSnapShot u will get the download url.
+            }
+        });
+*/
         // Get a handle to the RecyclerView.
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        mRecyclerView = findViewById(R.id.recyclerview);
         // Create an adapter and supply the data to be displayed.
         mAdapter = new RecyclerViewAdapter(this, getData(getApplicationContext()));
         // Connect the adapter with the RecyclerView.

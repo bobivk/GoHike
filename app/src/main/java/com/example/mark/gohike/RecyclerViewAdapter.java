@@ -3,7 +3,9 @@ package com.example.mark.gohike;
 /**
  * Created by Bobby on 06/02/2018.
  */
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -61,6 +63,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return paths.get(i);
     }
 
+    public void startPathActivity(Context c, int position) {
+        Intent intent = new Intent(c, PathActivity.class);
+        intent.putExtra("Path sent", paths.get(position));
+        c.startActivity(intent);
+    }
+
     @Override
     public RecyclerViewAdapter.PathViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View mItemView = mInflater.inflate(R.layout.list_view_model, parent, false);
@@ -82,7 +90,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         mCardView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startPathActivity(v, position);
+                startPathActivity(c, position);
             }
 
         });
@@ -98,9 +106,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return paths.size();
     }
 
-    public void startPathActivity(View view, int position) {
 
-    }
 
     /*public View getView(int i, View view, ViewGroup viewGroup) {
         if(view==null) {
