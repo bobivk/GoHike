@@ -91,12 +91,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         mCardView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-<<<<<<< HEAD
+
                 startPathActivity(c, position);
-=======
+
                 Log.e("PathActivity", "click" + v);
                 startPathActivity(v, position);
->>>>>>> b161230365ce24ff1c978f96a7bece00fc937078
+
             }
 
         });
@@ -115,13 +115,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return paths.size();
     }
 
-<<<<<<< HEAD
 
-=======
     public void startPathActivity(View view, int position) {
         Log.e("PathActivity", "stub, not implemented");
     }
->>>>>>> b161230365ce24ff1c978f96a7bece00fc937078
+
 
     /*public View getView(int i, View view, ViewGroup viewGroup) {
         if(view==null) {

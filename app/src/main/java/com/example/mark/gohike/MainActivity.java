@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity
     final ArrayList<Path> paths = new ArrayList<>();
 
     private ArrayList getData(Context c) {
-<<<<<<< HEAD
+
 
         /*
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -51,9 +51,9 @@ public class MainActivity extends AppCompatActivity
 
 
 
-/*
+
         trailsRootRef.child(Maliovitsa2.getName()).updateChildren(Maliovitsa2.toMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
-=======
+
         /* FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference trailsRootRef = database.getReference("trails");
 
@@ -88,13 +88,11 @@ public class MainActivity extends AppCompatActivity
                 // Failed to read value
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
-<<<<<<< HEAD
+
         });
 */
-=======
-        });*/
 
->>>>>>> b161230365ce24ff1c978f96a7bece00fc937078
+
 
 
 

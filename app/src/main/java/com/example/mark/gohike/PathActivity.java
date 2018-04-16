@@ -32,6 +32,9 @@ public class PathActivity extends AppCompatActivity {
 //            }
 //        });
 
+        ImageView imageView = findViewById(R.id.imageView);
+        imageView.setImageResource(pathReceived.image);
+
         TextView pathNameTV = findViewById(R.id.pathName);
         pathNameTV.setText(pathReceived.name);
 
