@@ -15,7 +15,5 @@ public class ScrollingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_path_example);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
     }
 }

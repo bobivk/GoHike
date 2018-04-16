@@ -4,9 +4,11 @@ package com.example.mark.gohike;
  * Created by Bobby on 06/02/2018.
  */
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,6 +84,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         mCardView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Log.e("PathActivity", "click" + v);
                 startPathActivity(v, position);
             }
 
@@ -90,16 +93,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public long getItemId(int i) {
+        Log.e("PathActivity", "dumb " + i);
+
         return i;
     }
 
     @Override
     public int getItemCount() {
+//        Log.e("PathActivity", "size" + paths.size());
         return paths.size();
     }
 
     public void startPathActivity(View view, int position) {
-
+        Log.e("PathActivity", "stub, not implemented");
     }
 
     /*public View getView(int i, View view, ViewGroup viewGroup) {
