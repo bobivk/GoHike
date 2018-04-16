@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity
     final ArrayList<Path> paths = new ArrayList<>();
 
     private ArrayList getData(Context c) {
+<<<<<<< HEAD
 
         /*
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -52,6 +53,13 @@ public class MainActivity extends AppCompatActivity
 
 /*
         trailsRootRef.child(Maliovitsa2.getName()).updateChildren(Maliovitsa2.toMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
+=======
+        /* FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference trailsRootRef = database.getReference("trails");
+
+
+        /* trailsRootRef.child(Maliovitsa2.getName()).updateChildren(Maliovitsa2.toMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
+>>>>>>> b161230365ce24ff1c978f96a7bece00fc937078
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
@@ -80,8 +88,13 @@ public class MainActivity extends AppCompatActivity
                 // Failed to read value
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
+<<<<<<< HEAD
         });
 */
+=======
+        });*/
+
+>>>>>>> b161230365ce24ff1c978f96a7bece00fc937078
 
 
 
@@ -157,11 +170,12 @@ public class MainActivity extends AppCompatActivity
         mRecyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(this, mRecyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
+                        Log.e("PathActivity", "click " + view + position);
                         startPathActivity(view, position);
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
-
+                        Log.e("PathActivity", "loong click");
                     }
                 })
         );
@@ -182,35 +196,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 */
-/*
-        Path RilaPath = new Path();
-        RilaPath.setName("Връх Мусала");
-        RilaPath.setRating(3.8);
-        RilaPath.setDifficulty(getString(R.string.difficulty_medium));
-        RilaPath.setLength(5115L);
-        RilaPath.setDescription("Very good path");
-        RilaPath.setImage(R.mipmap.rila34);
-        paths.add(RilaPath);
 
-        Path SevenRilaLakes = new Path();
-        SevenRilaLakes.setName("7те Рилски езера");
-        SevenRilaLakes.setRating(4.7);
-        SevenRilaLakes.setDifficulty(c.getString(R.string.difficulty_easy));
-        SevenRilaLakes.setLength(31213L);
-        SevenRilaLakes.setDescription("sedem ezera");
-        SevenRilaLakes.setImage(R.mipmap.sevenlakes);
-        paths.add(SevenRilaLakes);
-
-        Path GoldenBridges = new Path();
-        GoldenBridges.setName("Златните мостове");
-        GoldenBridges.setRating(4.2);
-        GoldenBridges.setLength(3115L);
-        GoldenBridges.setDifficulty("Лесна");
-        GoldenBridges.setImage(R.mipmap.goldenbridges);
-        paths.add(GoldenBridges);
-
-        return paths;
-        */
     }
 
     @Override
@@ -224,9 +210,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void startPathActivity(View view, int position) {
-        Intent intent = new Intent(this, ScrollingActivity.class);
+
+        Intent intent = new Intent(this, PathActivity.class);
         intent.putExtra("Path sent", paths.get(position));
         startActivity(intent);
+
     }
 
 

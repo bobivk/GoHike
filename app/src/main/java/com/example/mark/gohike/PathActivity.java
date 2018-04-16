@@ -21,16 +21,16 @@ public class PathActivity extends AppCompatActivity {
 
         Path pathReceived = (Path) getIntent().getSerializableExtra("Path sent");
 
-        ImageSwitcher imageSwitcher = findViewById(R.id.imageswitcher);
-        imageSwitcher.setImageResource(pathReceived.image);
-        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
-            @Override
-            public View makeView() {
-                ImageView imageView = new ImageView(getApplicationContext());
-                imageView.setScaleType(ImageView.ScaleType.CENTER);
-                return imageView;
-            }
-        });
+//        ImageSwitcher imageSwitcher = findViewById(R.id.imageswitcher);
+//        imageSwitcher.setImageResource(pathReceived.getImage());
+//        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+//            @Override
+//            public View makeView() {
+//                ImageView imageView = new ImageView(getApplicationContext());
+//                imageView.setScaleType(ImageView.ScaleType.CENTER);
+//                return imageView;
+//            }
+//        });
 
         TextView pathNameTV = findViewById(R.id.pathName);
         pathNameTV.setText(pathReceived.name);
